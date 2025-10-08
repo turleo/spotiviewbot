@@ -14,11 +14,13 @@ jobs:
             -   name: 👀 Check out the repo
                 uses: actions/checkout@v4
             -   name: 🏗️ Set up Python
-                uses: actions/setup-python@v4
+                uses: actions/setup-python@v6
                 with:
                     python-version: '3.13'
+                    cache: 'pip'
             -   name: ⬇️ Install dependencies
                 run: |
+                    apt update && apt install build-essential
                     pip install ruff ty
             -   name: 🧹 Lint
                 run: |
