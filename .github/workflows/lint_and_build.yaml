@@ -86,7 +86,7 @@ jobs:
                 uses: cssnr/stack-deploy-action@v1
                 with:
                     name: ${{ env.GITHUB_REPOSITORY }}
-                    file: 'compose.yaml'
+                    file: compose.yml
                     env_file: .env
                     host: ${{ secrets.DOCKER_HOST }}
                     user: ${{ secrets.DOCKER_USER }}
