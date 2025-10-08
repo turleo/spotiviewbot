@@ -1,6 +1,6 @@
 services:
     spotiviewbot:
-        image: ghcr.io/turleo/spotiviewbot:latest
+        image: ghcr.io/turleo/spotiviewbot:edge
         environment:
             BOT_TOKEN: $BOT_TOKEN
             SPOTIPY_CLIENT_ID: $SPOTIPY_CLIENT_ID
