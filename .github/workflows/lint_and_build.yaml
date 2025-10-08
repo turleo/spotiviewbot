@@ -73,6 +73,8 @@ jobs:
         runs-on: ubuntu-latest
         environment: spotiviewbot
         steps:
+            -   name: 👀 Check out the repo
+                uses: actions/checkout@v4
             -   name: 🤫 Make envfile
                 uses: SpicyPizza/create-envfile@v2.0
                 with:
