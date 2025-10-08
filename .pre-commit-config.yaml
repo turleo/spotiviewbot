@@ -1,0 +1,19 @@
+repos:
+    -   repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+        rev: 3.4.0
+        hooks:
+            -   id: editorconfig-checker
+                alias: ec
+    -   repo: https://github.com/astral-sh/ruff-pre-commit
+        rev: v0.14.0
+        hooks:
+            -   id: ruff-check
+                args:
+                    - --fix
+            -   id: ruff-format
+    -   repo: local
+        hooks:
+            -   id: ty
+                name: ty check
+                entry: uv run ty check .
+                language: python
