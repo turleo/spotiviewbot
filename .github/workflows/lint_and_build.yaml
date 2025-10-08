@@ -66,3 +66,27 @@ jobs:
                     labels: ${{ steps.meta.outputs.labels }}
                     cache-from: type=gha
                     cache-to: type=gha,mode=max
+`
+    deploy:
+        name: 🚀 Deploy
+        needs: build
+        runs-on: ubuntu-latest
+        environment: spotiviewbot
+        steps:
+            -   name: 🤫 Make envfile
+                uses: SpicyPizza/create-envfile@v2.0
+                with:
+                    envkey_BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+                    envkey_SPOTIPY_CLIENT_ID: ${{ secrets.SPOTIPY_CLIENT_ID }}
+                    envkey_SPOTIPY_CLIENT_SECRET: ${{ secrets.SPOTIPY_CLIENT_SECRET }}
+                    envkey_LOG_LEVEL: "WARN"
+            -   name: 🚀 Deploy
+                uses: cssnr/stack-deploy-action@v1
+                with:
+                    name: ${{ env.GITHUB_REPOSITORY }}
+                    file: 'compose.yaml'
+                    env_file: .env
+                    host: ${{ secrets.DOCKER_HOST }}
+                    user: ${{ secrets.DOCKER_USER }}
+                    ssh_key: ${{ secrets.DOCKER_KEY }}
+                    mode: compose

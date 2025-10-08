@@ -1,0 +1,8 @@
+services:
+    spotiviewbot:
+        image: ghcr.io/turleo/spotiviewbot:latest
+        environment:
+            BOT_TOKEN: $BOT_TOKEN
+            SPOTIPY_CLIENT_ID: $SPOTIPY_CLIENT_ID
+            SPOTIPY_CLIENT_SECRET: $SPOTIPY_CLIENT_SECRET
+            LOG_LEVEL: $LOG_LEVEL
